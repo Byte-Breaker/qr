@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 220 15% 25%; /* Dark Slate Blue for text */
+
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 220 15% 25%; /* Card text */
+
+    --popover: 0 0% 100%; /* Popover background */
+    --popover-foreground: 220 15% 25%; /* Popover text */
+
+    --primary: 205 90% 45%; /* Stronger, slightly deeper blue */
+    --primary-foreground: 0 0% 100%; /* Primary button text (white) */
+
+    --secondary: 210 30% 96%; /* Very Light Blue/Gray for secondary button background */
+    --secondary-foreground: 220 15% 35%; /* Darker Slate Blue for secondary button text */
+
+    --muted: 210 30% 96%; /* Muted backgrounds */
+    --muted-foreground: 220 10% 55%; /* Muted text (Medium Slate Gray, readable) */
+
+    --accent: 200 90% 93%; /* Very Light Sky Blue for accents (hover, etc.) */
+    --accent-foreground: 205 80% 40%; /* Slightly darker primary for accent text */
+
+    --destructive: 0 70% 55%; /* Vibrant, modern red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* Destructive button text (white) */
+
+    --border: 210 20% 88%; /* Light Gray-Blue for borders */
+    --input: 210 20% 94%; /* Input backgrounds (slightly off-white/blue) */
+    --ring: 205 90% 65%; /* Focus ring (lighter shade of primary) */
+
+    --radius: 0.75rem; /* Default border radius - increased for a softer look */
+    
+    /* Brand colors - kept as is for now, can be revisited */
+    --brand-50: 220 100% 96%;
+    --brand-100: 220 94% 92%;
+    --brand-200: 220 83% 85%;
+    --brand-300: 220 77% 76%;
+    --brand-400: 220 73% 63%;
+    --brand-500: 220 78% 50%;
+    --brand-600: 220 80% 45%;
+    --brand-700: 220 67% 37%;
+    --brand-800: 220 64% 32%;
+    --brand-900: 220 54% 28%;
+    --brand-950: 220 64% 17%;
+
+    /* Sidebar colors will now inherit from the main theme for consistency */
+    --sidebar-background: var(--background);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+  }
+
+  .dark {
+    --background: 220 25% 8%; /* Very Dark Desaturated Blue */
+    --foreground: 210 20% 95%; /* Light Gray-Blue for text */
+
+    --card: 220 25% 12%; /* Darker than background for cards */
+    --card-foreground: 210 20% 95%; /* Card text */
+
+    --popover: 220 25% 12%; /* Popover background */
+    --popover-foreground: 210 20% 95%; /* Popover text */
+
+    --primary: 205 85% 55%; /* Brighter blue for dark mode */
+    --primary-foreground: 220 20% 15%; /* Primary button text (dark for contrast) */
+
+    --secondary: 220 20% 18%; /* Dark, off-blue-grey for secondary button background */
+    --secondary-foreground: 210 15% 80%; /* Secondary button text (light grey-blue) */
+
+    --muted: 220 20% 18%; /* Muted backgrounds */
+    --muted-foreground: 210 15% 60%; /* Muted text (mid-light grey-blue, readable) */
+
+    --accent: 220 25% 22%; /* Subtle accent backgrounds (hover, etc.) */
+    --accent-foreground: 205 80% 60%; /* Accent text (brighter primary) */
+
+    --destructive: 0 65% 50%; /* Red for destructive (can be less saturated in dark) */
+    --destructive-foreground: 0 0% 98%; /* Destructive button text (light) */
+
+    --border: 220 20% 25%; /* Dark grey-blue for borders */
+    --input: 220 20% 20%; /* Input backgrounds (slightly different from border) */
+    --ring: 205 85% 60%; /* Focus ring (brighter shade of primary) */
+    
+    /* Sidebar colors will now inherit from the main theme for consistency */
+    --sidebar-background: var(--background);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border; /* Apply new border color by default */
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif; /* Apply Inter font to body */
+    -webkit-font-smoothing: antialiased; /* Improve font rendering on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Improve font rendering on Firefox */
+    /* Ensure body takes full height for potential sticky footer or full-height layouts */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Ensure headings and other elements also inherit the main font */
+  h1, h2, h3, h4, h5, h6, p, span, div, button, input, select, textarea, a {
+    font-family: 'Inter', sans-serif;
+  }
+  /* Improve focus visibility globally for accessibility */
+  *:focus-visible {
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+    outline: none;
+  }
+}
+
+/* Keep existing brand color utility classes, they might be used somewhere */
+.bg-brand-50 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--brand-50) / var(--tw-bg-opacity));
+}
+
+.bg-brand-100 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--brand-100) / var(--tw-bg-opacity));
+}
+
+.bg-brand-500 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--brand-500) / var(--tw-bg-opacity));
+}
+
+.bg-brand-600 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--brand-600) / var(--tw-bg-opacity));
+}
+
+.hover\:bg-brand-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--brand-600) / var(--tw-bg-opacity));
+}
+
+.text-brand-500 {
+  --tw-text-opacity: 1;
+  color: hsl(var(--brand-500) / var(--tw-text-opacity));
+}
+
+.text-brand-600 {
+  --tw-text-opacity: 1;
+  color: hsl(var(--brand-600) / var(--tw-text-opacity));
+}
+
+.border-brand-500 {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--brand-500) / var(--tw-border-opacity));
+}
+
+/* Removed previous specific dark mode overrides as the new theme variables should handle them */
+/* 
+.dark h1, 
+.dark h2, 
+.dark h3,
+.dark p, 
+.dark span:not(.text-muted-foreground),
+.dark button {
+  color: var(--foreground);
+}
+
+.dark [data-theme="light"] h1,
+.dark [data-theme="light"] h2,
+.dark [data-theme="light"] h3,
+.dark [data-theme="light"] p,
+.dark [data-theme="light"] span:not(.text-muted-foreground),
+.dark [data-theme="light"] button {
+  color: var(--foreground);
+}
+
+.dark button[class*='justify-start'] span {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark [role="combobox"] span {
+  color: hsl(var(--foreground));
+}
+*/
